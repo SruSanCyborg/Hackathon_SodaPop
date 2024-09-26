@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "name":" Black Cherry",
+        "price": 250,
+        "image": "image/1.png"
+    },
+    {
+        "id": 2,
+        "name":"  Ginger Lemon",
+        "price": 200,
+        "image": "image/2.png"
+    },
+    {
+        "id": 3,
+        "name":" Wild Berries",
+        "price": 290,
+        "image": "image/3.png"
+    },
+    {
+        "id": 4,
+        "name":" Ice Pop",
+        "price": 200,
+        "image": "image/4.png"
+    },
+    {
+        "id": 5,
+        "name":" LD05 LOUNGE CHAIR",
+        "price": 300,
+        "image": "image/5.png"
+    },
+    {
+        "id": 6,
+        "name":"coming soon",
+        "price": 200,
+        "image": "image/6.png"
+    },
+    {
+        "id": 7,
+        "name":" coming soon",
+        "price": 200,
+        "image": "image/7.png"
+    },
+    {
+        "id": 8,
+        "name":" comming soon",
+        "price": 200,
+        "image": "image/8.png"
+    }
+
+]

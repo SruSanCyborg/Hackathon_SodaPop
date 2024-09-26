@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        body {
+            font-family: Poppins;
+            margin: 0;
+            background-color: #010101;
+            color: #eee;
+        }
+        svg {
+            width: 25px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        header {
+            width: 1200px;
+            max-width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 50px 1fr 50px;
+            grid-template-rows: 50px;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+        header .logo {
+            font-size: 40px;
+            font-weight: bold;
+        }
+        header .menu {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            font-weight: 500;
+        }
+        /* CSS Slider */
+        .slider {
+            height: 100vh;
+            margin-top: -50px;
+            position: relative;
+        }
+        .slider .list .item {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: .5s;
+        }
+        .slider .list .item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .slider .list .item::after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-image: linear-gradient(to top, #000 40%, transparent);
+        }
+        .slider .list .item .content {
+            position: absolute;
+            left: 10%;
+            top: 20%;
+            width: 500px;
+            max-width: 80%;
+            z-index: 1;
+        }
+        .slider .list .item .content p:nth-child(1) {
+            text-transform: uppercase;
+            letter-spacing: 10px;
+        }
+        .slider .list .item .content h2 {
+            font-size: 100px;
+            margin: 0;
+        }
+        .slider .list .item.active {
+            opacity: 1;
+            z-index: 10;
+        }
+        @keyframes showContent {
+            to {
+                transform: translateY(0);
+                filter: blur(0);
+                opacity: 1;
+            }
+        }
+        .slider .list .item.active p:nth-child(1),
+        .slider .list .item.active h2,
+        .slider .list .item.active p:nth-child(3) {
+            transform: translateY(30px);
+            filter: blur(20px);
+            opacity: 0;
+            animation: showContent .5s .7s ease-in-out 1 forwards;
+        }
+        .slider .list .item.active h2 {
+            animation-delay: 1s;
+        }
+        .slider .list .item.active p:nth-child(3) {
+            animation-duration: 1.3s;
+        }
+        .arrows {
+            position: absolute;
+            top: 30%;
+            right: 50px;
+            z-index: 100;
+        }
+        .arrows button {
+            background-color: #eee5;
+            border: none;
+            font-family: monospace;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            font-size: x-large;
+            color: #eee;
+            transition: .5s;
+        }
+        .arrows button:hover {
+            background-color: #eee;
+            color: black;
+        }
+        /* Updated Thumbnail Styles */
+        .thumbnail {
+            position: absolute;
+            bottom: 50px;
+            z-index: 11;
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            height: auto; /* Changed to auto for better visibility */
+            padding: 0 50px;
+            box-sizing: border-box;
+            justify-content: center;
+        }
+        .thumbnail .dot {
+            width: 30px;
+            height: 30px;
+            background-color: gray;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: relative;
+        }
+        .thumbnail .dot:hover {
+            background-color: lightgray;
+        }
+        .thumbnail-preview {
+            position: absolute;
+            bottom: 40px; /* Adjust as necessary */
+            left: 50%;
+            transform: translateX(-50%);
+            display: none; /* Hidden by default */
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            z-index: 10;
+        }
+        .dot:hover + .thumbnail-preview {
+            display: block;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="logo">POPPINS</div>
+        <ul class="menu">
+            <A href="index.html">Home</a>
+             <A href="chandra\index.html">Order</a>
+            <li>Login</li>
+            <li>Help</li>
+            <li>Info</li>
+            <li>Search</li>
+        </ul>
+        <div class="search">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+        </div>
+    </header>
+
+    <!-- slider -->
+    <div class="slider">
+        <!-- list Items -->
+        <div class="list">
+            <div class="item active">
+                <img src="cherry1.jpeg">
+                <div class="content">
+                    <a href="can.html">view</a>
+                    </a>
+                    <h2 >Black Cherry</h2>
+                    <p>Introducing our new black cherry soft drink, a vibrant blend of rich, fruity flavor and sparkling refreshment. Perfect for any occasion, it’s a delicious way to elevate your beverage experience!</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="pop1.jpeg">
+                <div class="content">
+                    <a href="can3.html">view</a>
+                    <h2>Ginger lemon</h2>
+                    <p>Experience the nostalgic taste of summer with our Ginger Lemon soft drink. Bursting with fruity sweetness and a refreshing chill, it's the perfect way to cool down and indulge your cravings!</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="orange.jpeg">
+                <div class="content">
+                    <a href="can4.html">view</a>
+                    <h2>Orange Mango</h2>
+                    <p>Discover our innovative Orange Mango soft drink, a zesty fusion of spicy ginger and refreshing lemon. This revitalizing beverage offers a perfect balance of heat and citrus for an invigorating experience!</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="pop.jpeg">
+                <div class="content">
+                    <a href="can2.html">view</a>
+                    <h2>Ice Pop</h2>
+                    <p>Experience the nostalgic taste of summer with our ice pop-flavored soft drink. Bursting with fruity sweetness and a refreshing chill, it's the perfect way to cool down and indulge your cravings!</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="spark.jpeg">
+                <div class="content">
+                    <a href="can5.html">view</a>
+                    <h2>Spark lemon</h2>
+                    <p>Introducing our spark lemon soft drink, a bubbly twist on classic lemonade. With its zesty flavor and refreshing effervescence, it’s perfect for brightening your day and adding a burst of energy!/p>
+                </div>
+            </div>
+        </div>
+        <!-- button arrows -->
+        <div class="arrows">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+        <!-- thumbnail dots -->
+        <div class="thumbnail">
+            <div class="dot" data-slide="0"></div>
+            <div class="dot" data-slide="1"></div>
+            <div class="dot" data-slide="2"></div>
+            <div class="dot" data-slide="3"></div>
+            <div class="dot" data-slide="4"></div>
+            <div class="thumbnail-preview" id="preview-0">
+                <img src="image/img1.png" alt="Slider 01" style="width: 100%; height: auto;">
+            </div>
+            <div class="thumbnail-preview" id="preview-1">
+                <img src="image/img2.jpg" alt="Slider 02" style="width: 100%; height: auto;">
+            </div>
+            <div class="thumbnail-preview" id="preview-2">
+                <img src="image/img3.jpg" alt="Slider 03" style="width: 100%; height: auto;">
+            </div>
+            <div class="thumbnail-preview" id="preview-3">
+                <img src="image/img4.jpg" alt="Slider 04" style="width: 100%; height: auto;">
+            </div>
+            <div class="thumbnail-preview" id="preview-4">
+                <img src="image/img5.jpg" alt="Slider 05" style="width: 100%; height: auto;">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let items = document.querySelectorAll('.slider .list .item');
+        let next = document.getElementById('next');
+        let prev = document.getElementById('prev');
+        let dots = document.querySelectorAll('.thumbnail .dot');
+        let previews = document.querySelectorAll('.thumbnail-preview');
+
+        // config param
+        let countItem = items.length;
+        let itemActive = 0;
+
+        // event next click
+        next.onclick = function() {
+            itemActive = itemActive + 1;
+            if (itemActive >= countItem) {
+                itemActive = 0;
+            }
+            showSlider();
+        }
+
+        // event prev click
+        prev.onclick = function() {
+            itemActive = itemActive - 1;
+            if (itemActive < 0) {
+                itemActive = countItem - 1;
+            }
+            showSlider();
+        }
+
+        // auto run slider
+        let refreshInterval = setInterval(() => {
+            next.click();
+        }, 5000);
+
+        function showSlider() {
+            // remove item active old
+            let itemActiveOld = document.querySelector('.slider .list .item.active');
+            itemActiveOld.classList.remove('active');
+
+            // active new item
+            items[itemActive].classList.add('active');
+
+            // clear auto time run slider
+            clearInterval(refreshInterval);
+            refreshInterval = setInterval(() => {
+                next.click();
+            }, 5000);
+        }
+
+        // click dot to change slide
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                itemActive = index;
+                showSlider();
+            });
+        });
+    </script>
+</body>
+</html>

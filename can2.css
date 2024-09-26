@@ -1,0 +1,49 @@
+
+
+body {
+    font-family: Poppins;
+    margin: 0;
+    background-color: #010101;
+    color: #eee;
+}
+.banner{
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+
+}
+.banner .product{
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    left: 60%;
+    transform: translateX(-50%);
+    bottom: 170px;
+    z-index: 10;
+    width: 500px;
+    height: 500px;
+    transition: 1s;
+    --left:0px;
+}
+.banner .product .soda{
+    background: 
+        url(pop.png) var(--left) 0,
+        url(soda.png);
+    background-size: auto 100%;
+    width: 280px;
+    height: 579px;
+    aspect-ratio: 2/4;
+    background-blend-mode: multiply;
+    mask-image: url(soda.png);
+    mask-size: auto 100%;
+    transition: 1.2s;
+    
+}
+
+.banner .product:hover{
+    --left: -900px;
+}
+
+
+
+
+
